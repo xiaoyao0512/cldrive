@@ -208,11 +208,13 @@ int main(int argc, char** argv) {
 
   int instance_num = 0;
   for (auto path : SplitCommaSeparated(FLAGS_srcs)) {
+	std::cout << path << std::endl;
     logger->StartNewInstance();
     instance->set_opencl_src(ReadFileOrDie(path));
 
     for (size_t i = 0; i < devices.size(); ++i) {
       // Reset fields from previous loop iterations.
+	  std::cout << "i = " << i << std::endl;
       instance->clear_outcome();
       instance->clear_kernel();
 
@@ -223,6 +225,8 @@ int main(int argc, char** argv) {
 
     ++instance_num;
   }
+  
+  std::cout << "instance_num = " << instance_num << std::endl;
 
   return 0;
 }
