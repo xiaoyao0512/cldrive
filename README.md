@@ -42,7 +42,7 @@ environment.
 Then build cldrive using:
 
 ```sh
-$ bazel build -c opt //gpu/cldrive
+$ bazel build -c opt //gpu/cldrive --incompatible_restrict_string_escapes=false
 ```
 
 This will build an optimized `cldrive` binary and print its path.
@@ -114,3 +114,6 @@ to print text format protos, or `--output_format=pb` for binary format.
 Copyright 2016-2020 Chris Cummins <chrisc.101@gmail.com>.
 
 Released under the terms of the GPLv3 license. See `LICENSE` for details.
+
+
+
