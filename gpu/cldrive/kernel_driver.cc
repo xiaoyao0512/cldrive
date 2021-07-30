@@ -56,13 +56,9 @@ void KernelDriver::RunOrDie(Logger& logger) {
   }
 
   for (int i = 0; i < instance_.dynamic_params_size(); ++i) {
-	std::cout << "in kernel_driver, i = " << i << std::endl; 
     auto run = RunDynamicParams(instance_.dynamic_params(i), logger);
-    std::cout << "before ok" << std::endl;
 	int ret = run.ok();
-	std::cout << "after ok" << std::endl;
 	if (ret) {
-	  std::cout << "in if" << std::endl; 
       *kernel_instance_->add_run() = run.ValueOrDie();
     } else {
       kernel_instance_->clear_run();
@@ -111,6 +107,7 @@ labm8::Status KernelDriver::RunDynamicParams(
     CldriveKernelRun* run) {
   // Create a log message with just the dynamic params so that we can log the
   // global and local sizes on error.
+  std::cout << "In RunDynamicParams" << std::endl;
   gpu::libcecl::OpenClKernelInvocation log = DynamicParamsToLog(dynamic_params);
 
   // Check that the dynamic params are within legal range.

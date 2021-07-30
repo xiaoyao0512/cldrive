@@ -171,7 +171,7 @@ std::vector<::gpu::clinfo::OpenClDevice> GetDevicesFromCommaSeparatedString(
 
 int main(int argc, char** argv) {
 	
-  std::cout << "This should be the main function, right?" << std::endl;
+  //std::cout << "This should be the main function, right?" << std::endl;
   labm8::InitApp(&argc, &argv, "Drive arbitrary OpenCL kernels.");
 
   // Special case handling for --clinfo argument which prints to stdout then
@@ -214,7 +214,7 @@ int main(int argc, char** argv) {
 
     for (size_t i = 0; i < devices.size(); ++i) {
       // Reset fields from previous loop iterations.
-	  std::cout << "i = " << i << std::endl;
+	  //std::cout << "i = " << i << std::endl;
       instance->clear_outcome();
       instance->clear_kernel();
 
@@ -226,7 +226,7 @@ int main(int argc, char** argv) {
     ++instance_num;
   }
   
-  std::cout << "instance_num = " << instance_num << std::endl;
+  //std::cout << "instance_num = " << instance_num << std::endl;
 
   return 0;
 }
