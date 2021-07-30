@@ -171,7 +171,7 @@ std::vector<::gpu::clinfo::OpenClDevice> GetDevicesFromCommaSeparatedString(
 
 int main(int argc, char** argv) {
 	
-  cout << "This should be the main function, right?" << endl;
+  cout << "This should be the main function, right?" << std::endl;
   labm8::InitApp(&argc, &argv, "Drive arbitrary OpenCL kernels.");
 
   // Special case handling for --clinfo argument which prints to stdout then
