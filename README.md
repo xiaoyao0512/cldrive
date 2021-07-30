@@ -83,7 +83,8 @@ To run the kernel 5 times on both devices using 4096 work items divided into
 work groups of size 1024:
 
 ```sh
-$ bazel-bin/gpu/cldrive/cldrive --srcs=kernel.cl --num_runs=5 --gsize=4096 --lsize=1024 --envs='GPU|NVIDIA|Tesla_V100-PCIE-32GB|440.100|1.2','CPU|Intel_CPU_Runtime_for_OpenCL(TM)_Applications|Intel_Xeon_CPU_E5-2690_v4_@_2.60GHz|18.1.0.0920|2.1'
+$ 
+bazel-bin/gpu/cldrive/cldrive --srcs=kernel.cl --num_runs=5 --gsize=4096 --lsize=1024 --envs='GPU|NVIDIA|Tesla_V100-PCIE-32GB|440.100|1.2','CPU|Intel_CPU_Runtime_for_OpenCL(TM)_Applications|Intel_Xeon_CPU_E5-2690_v4_@_2.60GHz|18.1.0.0920|2.1'
 
 OpenCL Device, Kernel Name, Global Size, Local Size, Transferred Bytes, Runtime (ns)
 I 2019-02-26 09:54:10 [gpu/cldrive/libcldrive.cc:59] clBuildProgram() with options '-cl-kernel-arg-info' completed in 1851 ms
