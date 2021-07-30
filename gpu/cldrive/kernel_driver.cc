@@ -56,6 +56,7 @@ void KernelDriver::RunOrDie(Logger& logger) {
   }
 
   for (int i = 0; i < instance_.dynamic_params_size(); ++i) {
+	std::cout << "in kernel_driver, i = " << i << std::endl; 
     auto run = RunDynamicParams(instance_.dynamic_params(i), logger);
     if (run.ok()) {
       *kernel_instance_->add_run() = run.ValueOrDie();
