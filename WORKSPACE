@@ -342,6 +342,7 @@ http_archive(
     strip_prefix = "rules_proto-d9a123032f8436dbc34069cfc3207f2810a494ee",
     urls = ["https://github.com/stackb/rules_proto/archive/d9a123032f8436dbc34069cfc3207f2810a494ee.tar.gz"],
 )
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "com_google_protobuf",
