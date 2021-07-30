@@ -343,6 +343,16 @@ http_archive(
     urls = ["https://github.com/stackb/rules_proto/archive/d9a123032f8436dbc34069cfc3207f2810a494ee.tar.gz"],
 )
 
+http_archive(
+    name = "com_google_protobuf",
+    strip_prefix = "protobuf-3.11.3",
+    urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.11.3.tar.gz"],
+    patches = ["//:protobuf_protoinfo_prepare.patch", "//:protobuf_protoinfo_apply.patch"],
+)
+
+load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+protobuf_deps()
+
 # JSON C++ library.
 # https://github.com/nlohmann/json
 
