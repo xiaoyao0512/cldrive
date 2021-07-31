@@ -162,6 +162,7 @@ labm8::Status KernelDriver::RunDynamicParams(
                          "non-deterministic");
   }
 
+  std::cout << "kernel name: '" << name_ << std::endl;
   bool maybe_no_output = output_a == inputs;
 
   CHECK(args_set_.SetRandom(context_, dynamic_params, &inputs).ok());
