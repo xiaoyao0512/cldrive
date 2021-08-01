@@ -113,25 +113,25 @@ std::unique_ptr<KernelArgValue> KernelArg::TryToCreateKernelArgValue(
     const cl::Context& context, const DynamicParams& dynamic_params,
     bool rand_values) const {
   CHECK(type() != OpenClType::DEFAULT_UNKNOWN);
-  std::cout << "type = " << type() << std::endl;
+  //std::cout << "type = " << type() << std::endl;
   if (IsPointer() && IsGlobal()) {
-	std::cout << "11111\n";
+	//std::cout << "11111\n";
     return util::CreateGlobalMemoryArgValue(
         type(), context,
         /*size=*/dynamic_params.global_size_x(),
         /*value=*/1, rand_values);
   } else if (IsPointer() && IsLocal()) {
-	std::cout << "22222\n";
+	//std::cout << "22222\n";
     return util::CreateLocalMemoryArgValue(
         type(),
         /*size=*/dynamic_params.global_size_x());
   } else if (!IsPointer()) {
-	std::cout << "33333\n";
-	std::cout << "value = " << dynamic_params.global_size_x() << std::endl;
+	//std::cout << "33333\n";
+	//std::cout << "value = " << dynamic_params.global_size_x() << std::endl;
     return util::CreateScalarArgValue(type(),
                                       /*value=*/dynamic_params.global_size_x());
   } else {
-	std::cout << "44444\n";
+	//std::cout << "44444\n";
     return std::unique_ptr<KernelArgValue>(nullptr);
   }
 }
