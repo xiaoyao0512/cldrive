@@ -141,6 +141,6 @@ for clFile in files:
     maxCPUVal = max(timing_cpu)
     minCPUVal = min(timing_cpu)
     avgCPUVal = sum(timing_cpu) / float(len(timing_cpu))
-    fw.write("{}\t{}\t{}\t{}\t{}\t{}\t{}".format(filename, minGPUVal, maxGPUVal, avgGPUVal, minCPUVal, maxCPUVal, avgCPUVal))
+    fw.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(filename, minGPUVal, maxGPUVal, avgGPUVal, minCPUVal, maxCPUVal, avgCPUVal))
 
 fw.close()
