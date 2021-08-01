@@ -4,6 +4,7 @@ import subprocess as sp
 
 
 files = glob.glob("kernels/*.cl")
+files.sort(key=lambda f: os.stat(f).st_size)
 
 fw = open('timing', 'w')
 
@@ -11,10 +12,13 @@ counter = 0
 
 for clFile in files:
 
-    #print clFile
+    print "clFile = ", clFile
     tmp = clFile.split('/')
     filename = tmp[-1]
     times = 10
+    print "filename = ", filename
+    print "bazel-bin/gpu/cldrive/cldrive --srcs={} --num_runs={} --gsize=4096 --lsize=1024 --envs='GPU|NVIDIA|Tesla_V100-PCIE-32GB|440.100|1.2','CPU|Intel_CPU_Runtime_for_OpenCL(TM)_Applications|Intel_Xeon_CPU_E5-2690_v4_@_2.60GHz|18.1.0.0920|2.1'\n".format(clFile, times)
+    
     os.system("bazel-bin/gpu/cldrive/cldrive --srcs={} --num_runs={} --gsize=4096 --lsize=1024 --envs='GPU|NVIDIA|Tesla_V100-PCIE-32GB|440.100|1.2','CPU|Intel_CPU_Runtime_for_OpenCL(TM)_Applications|Intel_Xeon_CPU_E5-2690_v4_@_2.60GHz|18.1.0.0920|2.1' > temp".format(clFile, times))
    
     fr = open('temp', 'r')
