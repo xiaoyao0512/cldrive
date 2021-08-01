@@ -122,7 +122,19 @@ labm8::Status KernelDriver::RunDynamicParams(
     return labm8::Status(labm8::error::Code::INVALID_ARGUMENT,
                          "Unsupported dynamic params");
   }
-
+  /*
+  SetOnes(context_, dynamic_params, &inputs)
+  ->
+  kernel_arg_set.cc: TryToCreateOnesValue(context, dynamic_params);
+  ->
+  kernel_arg.cc: TryToCreateKernelArgValue(context, dynamic_params,
+                                   false); // random value = false
+  ->
+  TryToCreateKernelArgValue in kernel_arg.cc
+  ->
+    
+  */
+  std::cout << "GGGGGGGGGGGGG" << std::endl;
   KernelArgValuesSet inputs;
   auto args_status = args_set_.SetOnes(context_, dynamic_params, &inputs);
   if (!args_status.ok()) {
@@ -162,7 +174,7 @@ labm8::Status KernelDriver::RunDynamicParams(
                          "non-deterministic");
   }
 
-  std::cout << "kernel name: '" << name_ << std::endl;
+  //std::cout << "kernel name: " << name_ << std::endl;
   bool maybe_no_output = output_a == inputs;
 
   CHECK(args_set_.SetRandom(context_, dynamic_params, &inputs).ok());
