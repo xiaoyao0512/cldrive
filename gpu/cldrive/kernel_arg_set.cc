@@ -80,6 +80,7 @@ labm8::Status KernelArgSet::SetOnes(const cl::Context& context,
                                     KernelArgValuesSet* values) {
   values->Clear();
   for (auto& arg : args_) {
+	std::cout << "000000000\n";
     auto value = arg.TryToCreateOnesValue(context, dynamic_params);
     if (value) {
       values->AddKernelArgValue(std::move(value));
