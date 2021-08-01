@@ -30,6 +30,7 @@ for clFile in files:
         lst = line.split(',')
         if (len(lst) > 1):
             num = lst[-1]
+            num = num.rstrip()
             print "num = ", num
             if (num.isdigit()):
                 if (counter < times):
