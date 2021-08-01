@@ -8,16 +8,13 @@ files.sort(key=lambda f: os.stat(f).st_size)
 
 fw = open('timing', 'w')
 
-counter = 0
-
 for clFile in files:
-
-
 
     print "clFile = ", clFile
     tmp = clFile.split('/')
     filename = tmp[-1]
     filename = re.sub('\.', '_', filename)
+    filename = filename[:-3]
     if ( 
         filename == "nvidia-4_2-MersenneTwister-BoxMuller" or \
         filename == "shoc-1_1_5-Scan-top_scan" or \
@@ -108,7 +105,6 @@ for clFile in files:
         filename == "rodinia-3_1-gaussian-Fan1"
        ): 
         #print "I am here"
-        counter += 1
         continue      
     times = 10
     print "filename = ", filename
@@ -129,10 +125,8 @@ for clFile in files:
             print "num = ", num
             if (num.isdigit()):
                 if (counter < times):
-                    print "111"
                     timing_gpu.append(int(num))
                 elif (counter < 2*times):
-                    print "222"
                     timing_cpu.append(int(num))
                 else:
                     printf("You cannot reach here! Abort the program.")
