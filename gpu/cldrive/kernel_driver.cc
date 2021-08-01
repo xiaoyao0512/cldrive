@@ -191,7 +191,7 @@ labm8::Status KernelDriver::RunDynamicParams(
     return labm8::Status(labm8::error::Code::INVALID_ARGUMENT,
                          "Input insensitive");
   }
-*/
+
   if (maybe_no_output && output_b == inputs) {
     run->clear_log();  // Remove performance logs.
     LOG(WARNING) << "Skipping kernel that produces no output: '" << name_
@@ -201,7 +201,7 @@ labm8::Status KernelDriver::RunDynamicParams(
     logger.ClearBuffer();
     return labm8::Status(labm8::error::Code::INVALID_ARGUMENT, "No argument");
   }
-
+*/
   // We've passed the point of rejecting the kernel. Flush the buffered logs
   // from the preliminary runs.
   logger.PrintAndClearBuffer();
