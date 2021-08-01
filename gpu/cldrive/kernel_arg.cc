@@ -127,6 +127,7 @@ std::unique_ptr<KernelArgValue> KernelArg::TryToCreateKernelArgValue(
         /*size=*/dynamic_params.global_size_x());
   } else if (!IsPointer()) {
 	std::cout << "33333\n";
+	std::cout << "value = " << dynamic_params.global_size_x() << std::endl;
     return util::CreateScalarArgValue(type(),
                                       /*value=*/dynamic_params.global_size_x());
   } else {
