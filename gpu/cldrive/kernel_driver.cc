@@ -175,7 +175,7 @@ labm8::Status KernelDriver::RunDynamicParams(
   }
 
   //std::cout << "kernel name: " << name_ << std::endl;
-  bool maybe_no_output = output_a == inputs;
+  //bool maybe_no_output = output_a == inputs;
 
   CHECK(args_set_.SetRandom(context_, dynamic_params, &inputs).ok());
   inputs.SetAsArgs(&kernel_);
