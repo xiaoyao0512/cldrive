@@ -181,7 +181,7 @@ labm8::Status KernelDriver::RunDynamicParams(
   inputs.SetAsArgs(&kernel_);
   *run->add_log() = RunOnceOrDie(dynamic_params, inputs, &output_b, run, logger,
                                  /*flush=*/false);
-
+/*
   if (output_a == output_b) {
     run->clear_log();  // Remove performance logs.
     LOG(WARNING) << "Skipping input insensitive kernel: '" << name_ << "'";
@@ -191,7 +191,7 @@ labm8::Status KernelDriver::RunDynamicParams(
     return labm8::Status(labm8::error::Code::INVALID_ARGUMENT,
                          "Input insensitive");
   }
-
+*/
   if (maybe_no_output && output_b == inputs) {
     run->clear_log();  // Remove performance logs.
     LOG(WARNING) << "Skipping kernel that produces no output: '" << name_
