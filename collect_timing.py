@@ -41,10 +41,10 @@ for clFile in files:
                     exit(0)
                 counter += 1
     fr.close()
-    maxGPUVal = max(timimg_gpu)
+    maxGPUVal = max(timing_gpu)
     minGPUVal = min(timing_gpu)
     avgGPUVal = sum(timing_gpu) / float(len(timing_gpu))
-    maxCPUVal = max(timimg_cpu)
+    maxCPUVal = max(timing_cpu)
     minCPUVal = min(timing_cpu)
     avgCPUVal = sum(timing_cpu) / float(len(timing_cpu))
     fw.write("{}\t{}\t{}\t{}\t{}\t{}\t{}".format(filename, minGPUVal, maxGPUVal, avgGPUVal, minCPUVal, maxCPUVal, avgCPUVal))
