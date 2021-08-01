@@ -26,6 +26,7 @@ for clFile in files:
     timing_gpu = []
     counter = 0
     for line in fr:
+        print "line = ", line
         lst = line.split(',')
         if (len(lst) > 1):
             num = lst[-1]
