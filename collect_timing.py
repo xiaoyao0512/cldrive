@@ -29,10 +29,13 @@ for clFile in files:
         lst = line.split(',')
         if (len(lst) > 1):
             num = lst[-1]
+            print "num = ", num
             if (num.isdigit()):
                 if (counter < times):
+                    print "111"
                     timing_gpu.append(int(num))
                 elif (counter < 2*times):
+                    print "222"
                     timing_cpu.append(int(num))
                 else:
                     printf("You cannot reach here! Abort the program.")
