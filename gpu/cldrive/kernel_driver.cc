@@ -134,7 +134,7 @@ labm8::Status KernelDriver::RunDynamicParams(
   ->
     
   */
-  std::cout << "GGGGGGGGGGGGG" << std::endl;
+
   KernelArgValuesSet inputs;
   auto args_status = args_set_.SetOnes(context_, dynamic_params, &inputs);
   if (!args_status.ok()) {

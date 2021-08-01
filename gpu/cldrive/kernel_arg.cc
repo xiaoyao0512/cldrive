@@ -130,6 +130,7 @@ std::unique_ptr<KernelArgValue> KernelArg::TryToCreateKernelArgValue(
     return util::CreateScalarArgValue(type(),
                                       /*value=*/dynamic_params.global_size_x());
   } else {
+	std::cout << "44444\n";
     return std::unique_ptr<KernelArgValue>(nullptr);
   }
 }
