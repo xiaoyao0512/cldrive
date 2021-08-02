@@ -118,7 +118,7 @@ std::unique_ptr<KernelArgValue> KernelArg::TryToCreateKernelArgValue(
 	//std::cout << "11111\n";
     return util::CreateGlobalMemoryArgValue(
         type(), context,
-        /*size=*/dynamic_params.global_size_x(),
+        /*size=*/dynamic_params.global_size_x()*200,
         /*value=*/1, rand_values);
   } else if (IsPointer() && IsLocal()) {
 	//std::cout << "22222\n";
