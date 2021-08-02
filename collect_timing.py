@@ -121,7 +121,7 @@ for clFile in files:
             line = re.sub('restrict', '', line)
             line = re.sub('__read_only', '', line)
         line = re.sub('volatile', '', line)
-        line = re.sub('local', '', line)           
+        #line = re.sub('local', '', line)           
         fw2.write(line)
     fr2.close()
     fw2.close()
