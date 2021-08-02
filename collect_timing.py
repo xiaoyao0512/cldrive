@@ -13,8 +13,9 @@ for clFile in files:
     print "clFile = ", clFile
     tmp = clFile.split('/')
     filename = tmp[-1]
-    filename = re.sub('\.', '_', filename)
-    filename = filename[:-3]
+    fname = filename[:-3]
+    filename = re.sub('\.', '_', fname)
+    
     if ( 
         filename == "nvidia-4_2-MersenneTwister-BoxMuller" or \
         filename == "shoc-1_1_5-Scan-top_scan" or \
@@ -105,10 +106,30 @@ for clFile in files:
         filename == "rodinia-3_1-gaussian-Fan1"
        ): 
         #print "I am here"
-        continue      
-    times = 10
+        continue  
+
+
+    # Convert a kernel to another one that can be recognized by the tool
+    fr2 = open(clFile, 'r')
+    fw2 = open("output_kernels/{}.cl".format(filename), 'w')
+
+    for line in fr2:
+        if (re.match('__kernel', line)):
+            line = re.sub('__constant', '__global', line)
+            line = re.sub('__local', '__global', line)
+            line = re.sub('(__)?const ', '', line)
+            line = re.sub('restrict', '', line)
+            line = re.sub('__read_only', '', line)
+        line = re.sub('volatile', '', line)
+        line = re.sub('local', '', line)           
+        fw2.write(line)
+    fr2.close()
+    fw2.close()
+        
+    times = 5
     print "filename = ", filename
-    print "bazel-bin/gpu/cldrive/cldrive --srcs={} --num_runs={} --gsize=4096 --lsize=1024 --envs='GPU|NVIDIA|Tesla_V100-PCIE-32GB|440.100|1.2','CPU|Intel_CPU_Runtime_for_OpenCL(TM)_Applications|Intel_Xeon_CPU_E5-2690_v4_@_2.60GHz|18.1.0.0920|2.1'\n".format(clFile, times)
+    clFile = "output_kernels/{}.cl".format(filename)
+    #print "bazel-bin/gpu/cldrive/cldrive --srcs={} --num_runs={} --gsize=4096 --lsize=1024 --envs='GPU|NVIDIA|Tesla_V100-PCIE-32GB|440.100|1.2','CPU|Intel_CPU_Runtime_for_OpenCL(TM)_Applications|Intel_Xeon_CPU_E5-2690_v4_@_2.60GHz|18.1.0.0920|2.1'\n".format(clFile, times)
     
     os.system("bazel-bin/gpu/cldrive/cldrive --srcs={} --num_runs={} --gsize=4096 --lsize=1024 --envs='GPU|NVIDIA|Tesla_V100-PCIE-32GB|440.100|1.2','CPU|Intel_CPU_Runtime_for_OpenCL(TM)_Applications|Intel_Xeon_CPU_E5-2690_v4_@_2.60GHz|18.1.0.0920|2.1' > temp".format(clFile, times))
    
@@ -122,7 +143,7 @@ for clFile in files:
         if (len(lst) > 1):
             num = lst[-1]
             num = num.rstrip()
-            print "num = ", num
+            #print "num = ", num
             if (num.isdigit()):
                 if (counter < times):
                     timing_gpu.append(int(num))
