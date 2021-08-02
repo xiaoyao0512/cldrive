@@ -107,7 +107,7 @@ labm8::Status KernelDriver::RunDynamicParams(
     CldriveKernelRun* run) {
   // Create a log message with just the dynamic params so that we can log the
   // global and local sizes on error.
-  std::cout << "In RunDynamicParams" << std::endl;
+  //std::cout << "In RunDynamicParams" << std::endl;
   gpu::libcecl::OpenClKernelInvocation log = DynamicParamsToLog(dynamic_params);
 
   // Check that the dynamic params are within legal range.
@@ -163,7 +163,7 @@ labm8::Status KernelDriver::RunDynamicParams(
                                  /*flush=*/false);
   *run->add_log() = RunOnceOrDie(dynamic_params, inputs, &output_b, run, logger,
                                  /*flush=*/false);
-
+/*
   if (output_a != output_b) {
     run->clear_log();  // Remove performance logs.
     LOG(WARNING) << "Skipping non-deterministic kernel: '" << name_ << "'";
@@ -173,7 +173,7 @@ labm8::Status KernelDriver::RunDynamicParams(
     return labm8::Status(labm8::error::Code::INVALID_ARGUMENT,
                          "non-deterministic");
   }
-
+*/
   //std::cout << "kernel name: " << name_ << std::endl;
   //bool maybe_no_output = output_a == inputs;
 
